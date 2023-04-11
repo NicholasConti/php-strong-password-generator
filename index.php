@@ -1,14 +1,5 @@
 <?php
-// CONTROLLO SE L' INPUT HA UN VALORE
-if (!empty($_GET['passLength'])) {
-    $lenght = $_GET['passLength'];
-}
-//FUNZIONE CHE GENERA UNA PASSWORD CASUALE PARTENDO DALLA LUNGHEZZA RISCHIESTA DALL UTENTE
-function generateRandomString($lunghezza)
-{
-    $permitted_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-*/=#';
-    return substr(str_shuffle($permitted_chars), 0, $lunghezza);
-}
+include __DIR__ . './functions.php'
 ?>
 
 
@@ -24,15 +15,24 @@ function generateRandomString($lunghezza)
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 
-<body>
-    <form action="index.php" method="GET">
-        <label for="nWords">Lunghezza Password:</label>
-        <input type="number" name="passLength" id="nWords" placeholder="Inserisci il numero di caratteri">
-        <button>CREA</button>
+<body class="vh-100 d-flex align-items-center">
+    <div class="card container-lg border-success mb-3">
         <?php if (!empty($_GET['passLength'])) : ?>
-            <div><?php echo generateRandomString($lenght); ?></div>
+            <div class="card-header">
+                <div><?php echo generateRandomString($lenght); ?></div>
+            </div>
         <?php endif; ?>
-    </form>
+        <div class="card-body">
+            <form action="index.php" method="GET">
+                <label for="nWords">Lunghezza Password:</label>
+                <input type="number" name="passLength" id="nWords" placeholder="Inserisci il numero di caratteri">
+                <button>CREA</button>
+            </form>
+        </div>
+    </div>
+
+
+
 </body>
 
 </html>
