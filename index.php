@@ -1,3 +1,17 @@
+<?php
+// CONTROLLO SE L' INPUT HA UN VALORE
+if (!empty($_GET['passLength'])) {
+    $lenght = $_GET['passLength'];
+}
+//FUNZIONE CHE GENERA UNA PASSWORD CASUALE PARTENDO DALLA LUNGHEZZA RISCHIESTA DALL UTENTE
+function generateRandomString($lunghezza)
+{
+    $permitted_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-*/=#';
+    return substr(str_shuffle($permitted_chars), 0, $lunghezza);
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +25,14 @@
 </head>
 
 <body>
-
+    <form action="index.php" method="GET">
+        <label for="nWords">Lunghezza Password:</label>
+        <input type="number" name="passLength" id="nWords" placeholder="Inserisci il numero di caratteri">
+        <button>CREA</button>
+        <?php if (!empty($_GET['passLength'])) : ?>
+            <div><?php echo generateRandomString($lenght); ?></div>
+        <?php endif; ?>
+    </form>
 </body>
 
 </html>
