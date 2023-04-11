@@ -1,5 +1,6 @@
 <?php
-include __DIR__ . './functions.php'
+include __DIR__ . './functions.php';
+include __DIR__ . './session.php';
 ?>
 
 
@@ -16,12 +17,13 @@ include __DIR__ . './functions.php'
 </head>
 
 <body class="vh-100 d-flex align-items-center">
-    <div class="card container-lg border-success mb-3">
-        <?php if (!empty($_GET['passLength'])) : ?>
+    <div class="card container-lg border-success mb-3 text-center">
+        <!-- <?php if (!empty($_GET['passLength'])) : ?>
             <div class="card-header">
                 <div><?php echo generateRandomString($lenght); ?></div>
             </div>
-        <?php endif; ?>
+        <?php endif; ?> -->
+        <h2>Password Generator</h2>
         <div class="card-body">
             <form action="index.php" method="GET">
                 <label for="nWords">Lunghezza Password:</label>
